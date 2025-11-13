@@ -1,0 +1,32 @@
+name: TMAS Scan
+
+on:
+  push:
+
+jobs:
+  tmas-scan:
+    name: TMAS Repo Scan
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          path: sample-ai-sandbox
+      - name: snoop around
+        run: |
+          pwd
+          ls -la
+          ls -la sample-ai-sandbox
+          ls -la sample-ai-sandbox/python-mcp-server
+          cat sample-ai-sandbox/.git/config
+      - name: Download TMAS and Scan Repo for Open Source Vulnerabilities and Secrets
+        uses: trendmicro/tmas-scan-action@v3.0.1
+        with:
+          version: '2'
+          vulnerabilitiesScan: true
+          malwareScan: false
+          secretsScan: false
+          artifact: dir:./sample-ai-sandbox/python-mcp-server
+          additionalArgs: ${{ secrets.ADDITIONAL_ARGS }} --evaluatePolicy -vvv
+          tmasApiKey: ${{ secrets.TMAS_API_KEY }}
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
