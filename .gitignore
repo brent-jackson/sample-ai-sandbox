@@ -1,5 +1,5 @@
 # Go compiled binaries
-sample-mcp-server/bin
+**/bin
 
 # Go build cache and module cache
 .gocache/
