@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "sample-mcp-server": {
+      "command": "go",
+      "args": ["run", "main.go"],
+      "cwd": "."
+    }
+  }
+}
