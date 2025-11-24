@@ -1,0 +1,49 @@
+# Binaries
+bin/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Test binaries
+*.test
+
+# Output of the go coverage tool
+*.out
+coverage.*
+
+# Dependency directories
+vendor/
+
+# Go workspace file
+go.work
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+*.md
+!README.md
+
+# Example and test files
+examples/
+*_test.go
+test_server.sh
+run_example.sh
+
+# Config files (keep if needed at runtime)
+mcp-config.json
+Makefile
+USAGE.md
