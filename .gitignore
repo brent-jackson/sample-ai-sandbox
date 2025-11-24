@@ -3,7 +3,6 @@
 
 # Go build cache and module cache
 .gocache/
-go.sum
 
 # IDE files
 .vscode/
