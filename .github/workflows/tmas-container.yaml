@@ -19,10 +19,10 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
       - name: Build image
-        working-directory: sample-ai-sandbox/go-mcp-server
+        working-directory: sample-ai-sandbox/python-mcp-server
         run: make docker-build
       - name: Push image to Docker Hub
-        working-directory: sample-ai-sandbox/go-mcp-server
+        working-directory: sample-ai-sandbox/python-mcp-server
         run: make docker-push
       - name: Download TMAS and Scan Repo for Open Source Vulnerabilities and Secrets
         uses: trendmicro/tmas-scan-action@v3.0.1
@@ -31,7 +31,7 @@ jobs:
           vulnerabilitiesScan: true
           malwareScan: false
           secretsScan: false
-          artifact: registry:jacksonwbrent/sample-ai-sandbox:golang-latest
+          artifact: registry:jacksonwbrent/sample-ai-sandbox:python-latest
           additionalArgs: ${{ secrets.ADDITIONAL_ARGS }} --evaluatePolicy -vvv
           tmasApiKey: ${{ secrets.TMAS_API_KEY }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}
