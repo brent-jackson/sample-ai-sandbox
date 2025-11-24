@@ -2,6 +2,7 @@ name: TMAS Scan
 
 on:
   push:
+  workflow_dispatch:
 
 jobs:
   tmas-scan:
