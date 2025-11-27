@@ -3,11 +3,24 @@ name: TMAS Image Scan
 on:
   push:
   workflow_dispatch:
+    inputs:
+      environment:
+        type: environment
+        description: Which environment's TMAS_API_KEY secret to use
+      scanVuln:
+        description: "Scan for vulnerabilities"
+        type: boolean
+        default: true
+      scanSecret:
+        description: "Scan for secrets"
+        type: boolean
+        default: true
 
 jobs:
   tmas-scan:
     name: TMAS Image Scan
     runs-on: ubuntu-22.04
+    environment: ${{ github.event.inputs.environment || 'codesec prod' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
